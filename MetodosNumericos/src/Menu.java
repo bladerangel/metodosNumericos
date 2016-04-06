@@ -38,6 +38,17 @@ public class Menu {
 			System.out.println();
 			break;
 
+		case "S":
+			System.out.println("S - Sistema Linear");
+			break;
+
+		case "E":
+			System.out.println("E - Equação Algébrica");
+			break;
+
+		case "F":
+			System.out.println("Vou saiu do programa!");
+			break;
 		default:
 			System.out.println("Opção errada! Escolha novamente...");
 			break;
