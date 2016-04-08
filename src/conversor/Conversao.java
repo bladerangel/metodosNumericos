@@ -1,5 +1,15 @@
+package conversor;
 
 public class Conversao {
+
+	public void resolucao(int numeroDecimal) {
+		metodoBinario(numeroDecimal);
+		System.out.println();
+		metodoOctal(numeroDecimal);
+		System.out.println();
+		metodoHexa(numeroDecimal);
+		System.out.println();
+	}
 
 	public void metodoBinario(int numero) {
 		int quociente;
