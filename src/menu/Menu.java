@@ -48,7 +48,7 @@ public class Menu {
 		double[][] matriz = new double[quantidadeEquacoes][quantidadeEquacoes + 1];
 		for (int i = 0; i < quantidadeEquacoes; i++) {
 			for (int j = 0; j < quantidadeEquacoes + 1; j++) {
-				matriz[i][j] = entrada.nextInt();
+				matriz[i][j] = entrada.nextDouble();
 			}
 		}
 		sistemaLinear.resolucao(matriz);
