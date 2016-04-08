@@ -1,4 +1,5 @@
 package menu;
+
 import java.util.Scanner;
 
 import conversor.Conversao;
@@ -42,8 +43,7 @@ public class Menu {
 
 	public void sistemaLinear() {
 		System.out.println("S - Sistema Linear");
-		System.out
-				.println("Digite a quantidade de equações, em seguida digite os coeficiente e termos independentes:");
+		System.out.println("Digite a quantidade de equações, em seguida digite os coeficiente e termos independentes:");
 		int quantidadeEquacoes = entrada.nextInt();
 		double[][] matriz = new double[quantidadeEquacoes][quantidadeEquacoes + 1];
 		for (int i = 0; i < quantidadeEquacoes; i++) {
@@ -62,7 +62,7 @@ public class Menu {
 		double[] equacao = new double[grau + 1];
 		// System.out.println(equacao.length);
 		for (int i = 0; i < equacao.length; i++) {
-			equacao[i] = entrada.nextInt();
+			equacao[i] = entrada.nextDouble();
 		}
 		this.equacao.resolucao(grau, equacao);
 
