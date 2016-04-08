@@ -36,7 +36,7 @@ public class Menu {
 	public void conversao() {
 		System.out.println("C - Conversão");
 		System.out.println("Digite um número decimal:");
-		int numeroDecimal = entrada.nextInt();
+		double numeroDecimal = entrada.nextDouble();
 		conversao.resolucao(numeroDecimal);
 	}
 
