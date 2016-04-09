@@ -12,6 +12,7 @@ public class Conversao {
 		int quociente;
 		int resto;
 		int parteReal = (int) numero;
+		double parteFracionaria = numero - parteReal;
 		String conversao = "";
 		while (parteReal > 1) {
 
@@ -22,9 +23,6 @@ public class Conversao {
 		}
 		conversao += parteReal;
 		conversao = new StringBuilder(conversao).reverse().toString() + ",";
-
-		parteReal = (int) numero;
-		double parteFracionaria = numero - parteReal;
 
 		while (parteFracionaria != 0) {
 			parteFracionaria *= base;
