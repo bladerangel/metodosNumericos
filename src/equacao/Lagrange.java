@@ -2,14 +2,12 @@ package equacao;
 
 public class Lagrange {
 
-	public double teorema(double[] equacao) throws Exception {
+	public double teorema(double[] equacao) {
 		int n = equacao.length - 1;
-		double a0 = equacao[0];
 		double an = equacao[n];
 		double b = 0;
 		int k = 0;
-
-		if (an > 0 && a0 != 0) {
+		if (an > 0) {
 			for (int i = 0; i < n; i++) {
 				if (equacao[i] < 0) {
 					k = i;
@@ -23,7 +21,7 @@ public class Lagrange {
 			// System.out.println(formula);
 			return formula;
 		}
-		throw new Exception();
+		return teorema(inverteSinalEquacao(equacao));
 	}
 
 	public double[] inverteEquacao(double[] equacao) {
@@ -45,8 +43,16 @@ public class Lagrange {
 		return equacaoNegativaIndicesImpares;
 	}
 
-	public double raizes(double[] equacao) throws Exception {
+	public double[] inverteSinalEquacao(double[] equacao) {
+		double[] equacaoSinalInvertido = new double[equacao.length];
+		for (int i = 0; i < equacao.length; i++) {
+			equacaoSinalInvertido[i] = -equacao[i];
 
+		}
+		return equacaoSinalInvertido;
+	}
+
+	public double raizes(double[] equacao) {
 		double l = teorema(equacao);
 		// System.out.println(l);
 		double l1 = teorema(inverteEquacao(equacao));
@@ -59,5 +65,4 @@ public class Lagrange {
 		System.out.println("Raízes reais negativa:" + -l2 + " <= E- <= " + -1 / l3);
 		return l;
 	}
-
 }

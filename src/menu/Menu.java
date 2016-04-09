@@ -31,7 +31,6 @@ public class Menu {
 			opcao = entrada.next();
 			escolha();
 		} while (!opcao.equalsIgnoreCase("F"));
-
 	}
 
 	public void conversao() {
@@ -52,7 +51,6 @@ public class Menu {
 			}
 		}
 		sistemaLinear.resolucao(matriz);
-
 	}
 
 	public void equacao() {
@@ -63,8 +61,11 @@ public class Menu {
 		for (int i = equacao.length - 1; i >= 0; i--) {
 			equacao[i] = entrada.nextDouble();
 		}
-		this.equacao.resolucao(equacao);
-
+		double a0 = equacao[0];
+		if (a0 != 0)
+			this.equacao.resolucao(equacao);
+		else
+			System.out.println("Você deve fornecer um a0 para a equação!");
 	}
 
 	public void escolha() {
