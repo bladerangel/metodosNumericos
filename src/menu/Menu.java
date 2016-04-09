@@ -60,11 +60,10 @@ public class Menu {
 		System.out.println("Digite o grau, em seguida digite os coeficiente");
 		int grau = entrada.nextInt();
 		double[] equacao = new double[grau + 1];
-		// System.out.println(equacao.length);
-		for (int i = 0; i < equacao.length; i++) {
+		for (int i = equacao.length - 1; i >= 0; i--) {
 			equacao[i] = entrada.nextDouble();
 		}
-		this.equacao.resolucao(grau, equacao);
+		this.equacao.resolucao(equacao);
 
 	}
 

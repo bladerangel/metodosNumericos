@@ -10,7 +10,7 @@ public class Equacao {
 		lagrange = new Lagrange();
 	}
 
-	public void resolucao(int grau, double[] equacao) {
+	public void resolucao(double[] equacao) {
 
 		try {
 			newton.aproximacaoRaiz(equacao, lagrange.raizes(equacao));

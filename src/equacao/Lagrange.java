@@ -4,22 +4,23 @@ public class Lagrange {
 
 	public double teorema(double[] equacao) throws Exception {
 		int n = equacao.length - 1;
-		double a0 = equacao[n];
-		double an = equacao[0];
-		double b = a0;
-		int k = n;
+		double a0 = equacao[0];
+		double an = equacao[n];
+		double b = 0;
+		int k = 0;
 
 		if (an > 0 && a0 != 0) {
-			for (int i = n; i >= 0; i--) {
+			for (int i = 0; i < n; i++) {
 				if (equacao[i] < 0) {
-					k = n - i;
+					k = i;
 				}
-				if (equacao[i] <= b) {
+				if (equacao[i] < b) {
 					b = equacao[i];
 				}
 			}
 			// System.out.println(n + "--" + k + "--" + b + "--" + an);
-			double formula = 1 + Math.pow(Math.abs(b) / an, 1 / (n - k));
+			double formula = 1 + Math.pow(Math.abs(b) / an, (double) 1 / (n - k));
+			// System.out.println(formula);
 			return formula;
 		}
 		throw new Exception();
