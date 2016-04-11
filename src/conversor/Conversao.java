@@ -21,9 +21,15 @@ public class Conversao {
 			parteReal = quociente;
 			conversao += hexaLetras(resto);
 		}
-		conversao += parteReal;
-		conversao = new StringBuilder(conversao).reverse().toString() + ",";
+		if (parteReal != 0) {
+			conversao += parteReal;
+		}
 
+		conversao = new StringBuilder(conversao).reverse().toString();
+
+		if (parteFracionaria != 0) {
+			conversao += ",";
+		}
 		while (parteFracionaria != 0) {
 			parteFracionaria *= base;
 			parteReal = (int) (parteFracionaria);
