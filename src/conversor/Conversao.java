@@ -14,7 +14,7 @@ public class Conversao {
 		int parteReal = (int) numero;
 		double parteFracionaria = numero - parteReal;
 		String conversao = "";
-		while (parteReal > 1) {
+		while (parteReal > 0) {
 
 			quociente = parteReal / base;
 			resto = parteReal % base;
