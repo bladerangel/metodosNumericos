@@ -11,7 +11,7 @@ public class Equacao {
 	}
 
 	public void resolucao(double[] equacao) {
-		newton.aproximacaoRaiz(equacao, lagrange.raizes(equacao));
+		newton.aproximacaoRaiz(equacao, lagrange.limites(equacao));
 	}
 
 }

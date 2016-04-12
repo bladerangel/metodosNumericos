@@ -21,6 +21,7 @@ public class Menu {
 		equacao = new Equacao();
 	}
 
+	// mostra as opcoes que o usuario pode escolher
 	public void mostrarOpcoes() {
 		do {
 			System.out.println("\nEscolha dentre as opções abaixo:");
@@ -33,6 +34,7 @@ public class Menu {
 		} while (!opcao.equalsIgnoreCase("F"));
 	}
 
+	// opcao conversao
 	public void conversao() {
 		System.out.println("C - Conversão");
 		System.out.println("Digite um número decimal:");
@@ -40,6 +42,7 @@ public class Menu {
 		conversao.resolucao(numeroDecimal);
 	}
 
+	// opcao sistema linear
 	public void sistemaLinear() {
 		System.out.println("S - Sistema Linear");
 		System.out.println("Digite a quantidade de equações, em seguida digite os coeficiente e termos independentes:");
@@ -53,6 +56,7 @@ public class Menu {
 		sistemaLinear.resolucao(matriz);
 	}
 
+	// opcao equacao
 	public void equacao() {
 		System.out.println("E - Equação Algébrica");
 		System.out.println("Digite o grau, em seguida digite os coeficiente");

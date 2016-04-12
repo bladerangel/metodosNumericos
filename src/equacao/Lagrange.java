@@ -2,6 +2,7 @@ package equacao;
 
 public class Lagrange {
 
+	// retorna o valor aplicacando o teorema de lagrande
 	public double teorema(double[] equacao) {
 		int n = equacao.length - 1;
 		double an = equacao[n];
@@ -16,14 +17,13 @@ public class Lagrange {
 					b = equacao[i];
 				}
 			}
-			// System.out.println(n + "--" + k + "--" + b + "--" + an);
 			double formula = 1 + Math.pow(Math.abs(b) / an, (double) 1 / (n - k));
-			// System.out.println(formula);
 			return formula;
 		}
 		return teorema(inverteSinalEquacao(equacao));
 	}
 
+	// inverte a ordem da equacao
 	public double[] inverteEquacao(double[] equacao) {
 		double[] equacaoInvertida = new double[equacao.length];
 		for (int i = 0; i < equacao.length; i++) {
@@ -32,6 +32,7 @@ public class Lagrange {
 		return equacaoInvertida;
 	}
 
+	// troca o sinal dos expoentes impares da equacao
 	public double[] indicesImparesNegativosEquacao(double[] equacao) {
 		double[] equacaoNegativaIndicesImpares = new double[equacao.length];
 		for (int i = 0; i < equacao.length; i++) {
@@ -43,6 +44,7 @@ public class Lagrange {
 		return equacaoNegativaIndicesImpares;
 	}
 
+	// troca o sinal da equacao
 	public double[] inverteSinalEquacao(double[] equacao) {
 		double[] equacaoSinalInvertido = new double[equacao.length];
 		for (int i = 0; i < equacao.length; i++) {
@@ -52,15 +54,12 @@ public class Lagrange {
 		return equacaoSinalInvertido;
 	}
 
-	public double raizes(double[] equacao) {
+	// devolve o limite superior para ser utilizada no metodo de newton
+	public double limites(double[] equacao) {
 		double l = teorema(equacao);
-		// System.out.println(l);
 		double l1 = teorema(inverteEquacao(equacao));
-		// System.out.println(l1);
 		double l2 = teorema(indicesImparesNegativosEquacao(equacao));
-		// System.out.println(l2);
 		double l3 = teorema(inverteEquacao(indicesImparesNegativosEquacao(equacao)));
-		// System.out.println(l3);
 		System.out.println("Raízes reais positiva:" + 1 / l1 + " <= E+ <= " + l);
 		System.out.println("Raízes reais negativa:" + -l2 + " <= E- <= " + -1 / l3);
 		return l;

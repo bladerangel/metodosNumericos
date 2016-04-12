@@ -8,6 +8,7 @@ public class Conversao {
 		System.out.println("Hexadecimal:" + base(numeroDecimal, 16));
 	}
 
+	// retorna o numero correspondente a base fornecida
 	public String base(double numero, int base) {
 		int quociente;
 		int resto;
@@ -22,6 +23,7 @@ public class Conversao {
 			conversao += "0";
 		}
 
+		// divisoes sucessivas
 		while (parteReal > 0) {
 
 			quociente = parteReal / base;
@@ -32,12 +34,14 @@ public class Conversao {
 		if (parteReal != 0) {
 			conversao += parteReal;
 		}
-
+		// inverte a ordem dos restos das divisoes
 		conversao = new StringBuilder(conversao).reverse().toString();
 
 		if (parteFracionaria != 0) {
 			conversao += ",";
 		}
+
+		// multiplicacoes sucessivas
 		while (parteFracionaria != 0) {
 			parteFracionaria *= base;
 			parteReal = (int) (parteFracionaria);
@@ -47,8 +51,9 @@ public class Conversao {
 		return conversao;
 	}
 
-	public String hexaLetras(int valor) {
-		switch (valor) {
+	// valores caso a base seja a hexadecimal
+	public String hexaLetras(int resto) {
+		switch (resto) {
 		case 10:
 			return "A";
 		case 11:
@@ -62,7 +67,7 @@ public class Conversao {
 		case 15:
 			return "F";
 		default:
-			return String.valueOf(valor);
+			return String.valueOf(resto);
 		}
 	}
 
