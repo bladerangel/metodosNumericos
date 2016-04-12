@@ -14,6 +14,14 @@ public class Conversao {
 		int parteReal = (int) numero;
 		double parteFracionaria = numero - parteReal;
 		String conversao = "";
+		if (parteReal < 0) {
+			return "não é possível converter numeros negativos";
+		}
+
+		if (parteReal == 0) {
+			conversao += "0";
+		}
+
 		while (parteReal > 0) {
 
 			quociente = parteReal / base;
