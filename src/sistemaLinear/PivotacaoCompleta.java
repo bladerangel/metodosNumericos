@@ -44,6 +44,7 @@ public class PivotacaoCompleta {
 				for (int i = 0; i < linhas.length; i++) {
 					if (linhas[i] == -1) {
 						linha = i;
+						coluna=k;
 						break;
 					}
 				}
