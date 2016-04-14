@@ -11,22 +11,30 @@ public class ep1 {
 		entrada = new Scanner(System.in);
 	}
 
+	/*
+	 * O programa segue a seguinte sequencia de metodos implementados: 
+	 * 1 - menu
+	 * 2 - conversao 
+	 * 3 - sistema linear 
+	 * 4 - equacao algebrica
+	 */
+
 	// ----------------------- Menu ---------------------------
 
 	// mostra as opcoes que o usuario pode escolher
 	public void mostrarOpcoes() {
 		do {
-			System.out.println("\nEscolha dentre as opções abaixo:");
-			System.out.println("C - Conversão");
+			System.out.println("\nEscolha dentre as opcoes abaixo:");
+			System.out.println("C - Conversao");
 			System.out.println("S - Sistema Linear");
-			System.out.println("E - Equação Algébrica");
+			System.out.println("E - Equacao Algebrica");
 			System.out.println("F - Finalizar\n");
 			opcao = entrada.next();
-			escolha();
+			escolhaEntrada();
 		} while (!opcao.equalsIgnoreCase("F"));
 	}
 
-	public void escolha() {
+	public void escolhaEntrada() {
 		switch (opcao.toUpperCase()) {
 		case "C":
 			conversaoEntrada();
@@ -38,18 +46,18 @@ public class ep1 {
 			equacaoEntrada();
 			break;
 		case "F":
-			System.out.println("Vou saiu do programa!");
+			System.out.println("Voce saiu do programa!");
 			break;
 		default:
-			System.out.println("Opção errada! Escolha novamente...");
+			System.out.println("Opcao errada! Escolha novamente...");
 			break;
 		}
 	}
 
 	// escolhida a opcao conversao
 	public void conversaoEntrada() {
-		System.out.println("C - Conversão");
-		System.out.println("Digite um número decimal:");
+		System.out.println("C - Conversao");
+		System.out.println("Digite um numero decimal, usa-se a virgula(,) para separar a parte fracionaria:");
 		double numeroDecimal = entrada.nextDouble();
 		resolucaoConversao(numeroDecimal);
 	}
@@ -57,7 +65,7 @@ public class ep1 {
 	// escolhida a opcao sistema linear
 	public void sistemaLinearEntrada() {
 		System.out.println("S - Sistema Linear");
-		System.out.println("Digite a quantidade de equações, em seguida digite os coeficiente e termos independentes:");
+		System.out.println("Digite a quantidade de equacoes, em seguida digite os coeficiente e termos independentes:");
 		int quantidadeEquacoes = entrada.nextInt();
 		double[][] matriz = new double[quantidadeEquacoes][quantidadeEquacoes + 1];
 		for (int i = 0; i < quantidadeEquacoes; i++) {
@@ -70,23 +78,31 @@ public class ep1 {
 
 	// escolhida a opcao equacao
 	public void equacaoEntrada() {
-		System.out.println("E - Equação Algébrica");
-		System.out.println("Digite o grau, em seguida digite os coeficiente");
+		System.out.println("E - Equacao Algebrica");
+		System.out.println(
+				"Digite o grau, em seguida digite os coeficientes (caso an seja negativo a equacao sera multiplicada por -1):");
 		int grau = entrada.nextInt();
 		double[] equacao = new double[grau + 1];
 		for (int i = equacao.length - 1; i >= 0; i--) {
 			equacao[i] = entrada.nextDouble();
 		}
 		double a0 = equacao[0];
-		if (a0 != 0)
+		double an = equacao[equacao.length - 1];
+		if (a0 != 0 && an != 0) {
 			resolucaoEquacao(equacao);
-		else
-			System.out.println("Você deve fornecer um a0 para a equação!");
+		}
+		if (a0 == 0) {
+			System.out.println("Voce deve fornecer um a0 diferente de 0 para a equacao!");
+		}
+		if (an == 0) {
+			System.out.println("Voce deve fornecer um an diferente de 0 para a equacao!");
+		}
+
 	}
 
 	// ----------------------- Conversao ---------------------------
 	public void resolucaoConversao(double numeroDecimal) {
-		System.out.println("Binário:" + base(numeroDecimal, 2));
+		System.out.println("Binario:" + base(numeroDecimal, 2));
 		System.out.println("Octal:" + base(numeroDecimal, 8));
 		System.out.println("Hexadecimal:" + base(numeroDecimal, 16));
 	}
@@ -99,16 +115,14 @@ public class ep1 {
 		double parteFracionaria = numero - parteReal;
 		String conversao = "";
 		if (parteReal < 0) {
-			return "não é possível converter numeros negativos";
+			return "não é possível converter numeros negativos!";
 		}
-
 		if (parteReal == 0) {
 			conversao += "0";
 		}
 
 		// divisoes sucessivas
 		while (parteReal > 0) {
-
 			quociente = parteReal / base;
 			resto = parteReal % base;
 			parteReal = quociente;
@@ -285,7 +299,7 @@ public class ep1 {
 
 	// encontrando os valores das variaveis aplicando substituicoes retroativas
 	public int substituicoesRetroativas(double[][] matriz, int[] indexX) {
-		System.out.println("Solução:");
+		System.out.println("Solucao:");
 		int tipo = 0;
 		double[] valorX = new double[matriz.length];
 		double[] resultadosOrdenados = new double[matriz.length];
@@ -296,7 +310,7 @@ public class ep1 {
 			}
 			if (Math.abs(matriz[i][i]) < EPSILON) {
 				if (Math.abs(matriz[i][matriz.length] - soma) < EPSILON) {
-					System.out.println("Variaveis Livres : X" + (indexX[i] + 1));
+					System.out.println("Variaveis livres : X" + (indexX[i] + 1));
 					valorX[i] = 0;// atribui a variavel livre o valor 0
 					tipo = 1;
 				} else {
@@ -307,7 +321,7 @@ public class ep1 {
 			}
 
 		}
-		// mostras as variaveis em ondem crescente
+		// mostra as variaveis em ondem crescente
 		for (int index : indexX) {
 			resultadosOrdenados[indexX[index]] = valorX[index];
 		}
@@ -341,6 +355,7 @@ public class ep1 {
 			double formula = 1 + Math.pow(Math.abs(b) / an, (double) 1 / (n - k));
 			return formula;
 		}
+		// multiplica a equacao por -1
 		return teoremaLagrange(inverteSinalEquacao(equacao));
 	}
 
@@ -365,7 +380,7 @@ public class ep1 {
 		return equacaoNegativaIndicesImpares;
 	}
 
-	// troca o sinal da equacao
+	// troca o sinal da equacao quando o an<0
 	public double[] inverteSinalEquacao(double[] equacao) {
 		double[] equacaoSinalInvertido = new double[equacao.length];
 		for (int i = 0; i < equacao.length; i++) {
@@ -375,20 +390,20 @@ public class ep1 {
 		return equacaoSinalInvertido;
 	}
 
-	// devolve o limite superior para ser utilizada no metodo de newton
+	// calcula os limites e devolve o limite superior para ser utilizada no
+	// metodo de newton
 	public double limites(double[] equacao) {
 		double l = teoremaLagrange(equacao);
 		double l1 = teoremaLagrange(inverteEquacao(equacao));
 		double l2 = teoremaLagrange(indicesImparesNegativosEquacao(equacao));
 		double l3 = teoremaLagrange(inverteEquacao(indicesImparesNegativosEquacao(equacao)));
-		System.out.println("Raízes reais positiva:" + 1 / l1 + " <= E+ <= " + l);
-		System.out.println("Raízes reais negativa:" + -l2 + " <= E- <= " + -1 / l3);
+		System.out.println("Raizes reais positiva:" + 1 / l1 + " <= E+ <= " + l);
+		System.out.println("Raizes reais negativa:" + -l2 + " <= E- <= " + -1 / l3);
 		return l;
 	}
 
 	// calcula a aproximacao de uma raiz usando o limite superior da equacao
 	public void metodoNewton(double[] equacao, double limiteSuperior) {
-
 		double aproximacaoInicial = limiteSuperior;
 		double erro = 0;
 		double[] equacaoDerivada = derivadaEquacao(equacao);
@@ -401,9 +416,7 @@ public class ep1 {
 				break;
 			aproximacaoInicial = novaAproximacao;
 		}
-
-		System.out.println("Aproximação da raíz: " + aproximacaoInicial);
-
+		System.out.println("Aproximacao da raiz: " + aproximacaoInicial);
 	}
 
 	// retorna a equacao derivada
